@@ -80,31 +80,48 @@ setInterval(function(){duck.classList.toggle('flap')}, 250);
 
 // let duckShot =  duck.addEventListener('click', shoot)
 
+
+// SCURRY AND AMANDA FIGURED THIS OUT!
 function shootDuck (event) {
-     if (event.target.classList[0]=== 'duck'){
-       event.target.classList.add('shot')
+     if (event.target.classList[0] === 'duck'){
+       event.target.classList.add('shot');
      }
-     removeDuck();
+     setTimeout(removeDuck, 1000)
    }
 
    body.addEventListener('click', shootDuck);
+
+
+  function removeDuck(){
+     let ducks = document.querySelector('.shot')
+    ducks.remove()
+        checkForWinner();
+   }
+  // setTimeout(removeDuck(), 1000)
+
+  // shootDuck();
 
 
 
   // 12. After a duck has been clicked on, remove it from the DOM after
   //     a short delay (1 second) Hint Hint...use setTimeout
   //     as for removing the element check out https://dzone.com/articles/removing-element-plain
-  function removeDuck(event){
-     if(shootDuck){
-      duck.setTimeout(remove, 10000)
-     }
-  }
+  // setTimeout(function(){
+  //    let duck = document.querySelector('.shot')
+  //    duck.remove();}, 1000)
 
 
 
   // 13. Create a new function named checkForWinner() that reads the DOM
   //     to see if there are any ducks left. (How can we check the DOM for more than one element?, and how can we see how many elements we get back) If not, alert "YOU WIN!"
 
+function checkForWinner(){
+  if(document.getElementsByClassName('duck').length === 0){
+    alert('you win!')
+  }
+}
+
+    checkForWinner();
   // 14. BONUS: The ducks are moving pretty erratically, can you think
   //     of a way to adjust the ducks speed based on how far needs to move?
 
